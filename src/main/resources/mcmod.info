@@ -1,0 +1,16 @@
+[
+{
+  "modid": "vanishmentpoint",
+  "name": "Vanishment Point",
+  "description": "Adds a block that disappears at the configured time of Minecraft day",
+  "version": "${mod_version}",
+  "mcversion": "${minecraft_version}",
+  "url": "http://minecraft.curseforge.com/projects/vanishment-point",
+  "updateUrl": "",
+  "authorList": ["masa"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

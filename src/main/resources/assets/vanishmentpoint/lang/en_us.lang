@@ -1,0 +1,11 @@
+language.name=English
+language.region=US
+language.code=en_US
+
+vanishmentpoint.commands.current_time.celestial_angle=Celestial Angle: real: %s, adjusted: %s
+vanishmentpoint.commands.current_time.day=Day time: %s
+vanishmentpoint.commands.current_time.total=Total time: %s
+vanishmentpoint.commands.loadconfig.success=Vanishment Point: Loaded configuration
+
+item.vanishmentpoint.vanishing_block_time.name=Vanishing Block (Time)
+tile.vanishmentpoint.vanishing_block_time.name=Vanishing Block (Time)
