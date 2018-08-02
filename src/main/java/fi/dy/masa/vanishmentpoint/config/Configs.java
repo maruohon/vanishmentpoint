@@ -14,7 +14,8 @@ import fi.dy.masa.vanishmentpoint.reference.Reference;
 public class Configs
 {
     public static double celestialAngleOffset;
-    public static double vanishingBlockVanishingTime;
+    public static double vanishingBlockVanishingTimeStart;
+    public static double vanishingBlockVanishingTimeEnd;
     public static double vanishingBlockVanishingChance;
 
     public static File configurationFile;
@@ -75,11 +76,17 @@ public class Configs
         prop.setComment("This is the chance per each random tick that the block will vanish, if the time requirement for vanishing is met.");
         vanishingBlockVanishingChance = MathHelper.clamp(prop.getDouble(), 0.0, 1.0);
 
-        prop = conf.get(CATEGORY_GENERIC, "vanishingBlockVanishingTime", 0.6);
+        prop = conf.get(CATEGORY_GENERIC, "vanishingBlockVanishingTimeStart", 0.6);
         prop.setComment("This is the time of a Minecraft day the blocks will start to vanish at.\n" +
                         "Specified as the Celestial Angle value, which is length-of-day independent.\n" +
                         "Note that this is an adjusted value, see the celestialAngleOffset config. Range is 0.0 to 1.0.");
-        vanishingBlockVanishingTime = MathHelper.clamp(prop.getDouble(), 0.0, 1.0);
+        vanishingBlockVanishingTimeStart = MathHelper.clamp(prop.getDouble(), 0.0, 1.0);
+
+        prop = conf.get(CATEGORY_GENERIC, "vanishingBlockVanishingTimeEnd", 1.0);
+        prop.setComment("This is the time of a Minecraft day the blocks will stop vanishing at.\n" +
+                        "Specified as the Celestial Angle value, which is length-of-day independent.\n" +
+                        "Note that this is an adjusted value, see the celestialAngleOffset config. Range is 0.0 to 1.0.");
+        vanishingBlockVanishingTimeEnd = MathHelper.clamp(prop.getDouble(), 0.0, 1.0);
 
         if (conf.hasChanged())
         {

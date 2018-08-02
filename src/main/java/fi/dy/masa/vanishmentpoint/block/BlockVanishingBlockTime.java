@@ -25,11 +25,16 @@ public class BlockVanishingBlockTime extends Block
     @Override
     public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
     {
-        if (world.isRemote == false &&
-            getAdjustedAngle(world.getCelestialAngle(0)) >= Configs.vanishingBlockVanishingTime &&
-            rand.nextFloat() < Configs.vanishingBlockVanishingChance)
+        if (world.isRemote == false)
         {
-            world.setBlockToAir(pos);
+            float adjustedAngle = getAdjustedAngle(world.getCelestialAngle(0));
+
+            if (adjustedAngle >= Configs.vanishingBlockVanishingTimeStart &&
+                adjustedAngle < Configs.vanishingBlockVanishingTimeEnd &&
+                rand.nextFloat() < Configs.vanishingBlockVanishingChance)
+            {
+                world.setBlockToAir(pos);
+            }
         }
     }
 
