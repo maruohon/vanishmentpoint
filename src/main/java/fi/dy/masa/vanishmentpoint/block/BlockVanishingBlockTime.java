@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import fi.dy.masa.vanishmentpoint.config.Configs;
@@ -34,6 +35,20 @@ public class BlockVanishingBlockTime extends Block
                 rand.nextFloat() < Configs.vanishingBlockVanishingChance)
             {
                 world.setBlockToAir(pos);
+
+                if (Configs.scheduleNeighbors)
+                {
+                    for (EnumFacing side : EnumFacing.values())
+                    {
+                        BlockPos posSide = pos.offset(side);
+
+                        if (world.getBlockState(posSide).getBlock() == this)
+                        {
+                            int delay = rand.nextInt(20) + rand.nextInt(20);
+                            world.scheduleBlockUpdate(posSide, this, delay, 0);
+                        }
+                    }
+                }
             }
         }
     }

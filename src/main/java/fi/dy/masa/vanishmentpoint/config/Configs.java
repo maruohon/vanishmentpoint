@@ -13,6 +13,7 @@ import fi.dy.masa.vanishmentpoint.reference.Reference;
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class Configs
 {
+    public static boolean scheduleNeighbors;
     public static double celestialAngleOffset;
     public static double vanishingBlockVanishingTimeStart;
     public static double vanishingBlockVanishingTimeEnd;
@@ -71,6 +72,12 @@ public class Configs
                         "and the command '/vanishmentpoint-load-configs' to reload this config at any time.\n" +
                         "Valid range: -1 ... 1");
         celestialAngleOffset = MathHelper.clamp(prop.getDouble(), -1.0, 1.0);
+
+        prop = conf.get(CATEGORY_GENERIC, "scheduleNeighbors", false);
+        prop.setComment("If enabled, then a block that vanishes will schedule updates for it's neighboring vanishing blocks too.\n" +
+                        "Basically this makes the blocks disappear faster when they are placed next to other vanishing blocks,\n" +
+                        "instead of each block having to wait for a random tick to hit it.");
+        scheduleNeighbors = prop.getBoolean();
 
         prop = conf.get(CATEGORY_GENERIC, "vanishingBlockVanishingChance", 1.0);
         prop.setComment("This is the chance per each random tick that the block will vanish, if the time requirement for vanishing is met.");
