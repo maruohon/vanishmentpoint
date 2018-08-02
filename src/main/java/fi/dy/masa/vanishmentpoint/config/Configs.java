@@ -14,6 +14,7 @@ import fi.dy.masa.vanishmentpoint.reference.Reference;
 public class Configs
 {
     public static boolean scheduleNeighbors;
+    public static boolean solidOnTopOnly;
     public static double celestialAngleOffset;
     public static double vanishingBlockVanishingTimeStart;
     public static double vanishingBlockVanishingTimeEnd;
@@ -78,6 +79,10 @@ public class Configs
                         "Basically this makes the blocks disappear faster when they are placed next to other vanishing blocks,\n" +
                         "instead of each block having to wait for a random tick to hit it.");
         scheduleNeighbors = prop.getBoolean();
+
+        prop = conf.get(CATEGORY_GENERIC, "solidOnTopOnly", false);
+        prop.setComment("If true, then only the top of the block will be solid for entities.");
+        solidOnTopOnly = prop.getBoolean();
 
         prop = conf.get(CATEGORY_GENERIC, "vanishingBlockVanishingChance", 1.0);
         prop.setComment("This is the chance per each random tick that the block will vanish, if the time requirement for vanishing is met.");
